@@ -68,6 +68,7 @@ body {
   font-size: 12px;
   margin-bottom: 5px;
   color: #666;
+  margin-top: 10px;
 }
 
 .input-group input {
@@ -77,6 +78,10 @@ body {
   border-radius: 8px;
   background: #e6e6e6;
   font-size: 14px;
+}
+
+.input-group input:focus {
+  outline: #ec3237 solid 2px;
 }
 
 .btn {
@@ -96,7 +101,7 @@ body {
   background: #ec3237;
 }
 
-.entrar{
+.entrar {
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -105,7 +110,7 @@ body {
   font-weight: bolder;
 }
 
-.possuiconta{
+.possuiconta {
   margin-top: 20px;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
