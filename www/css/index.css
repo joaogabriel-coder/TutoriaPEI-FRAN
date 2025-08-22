@@ -29,10 +29,14 @@ body {
 }
 
 .header {
-  padding: 30px;
-  position: relative;
-  text-align: center;
   background: linear-gradient(to bottom, #303a73, #282e40);
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-right-radius: 60% 35%;
+  position: relative;
+  overflow: hidden;
 }
 
 .header img {
@@ -50,7 +54,8 @@ body {
 .content h2 {
   color: #ec3237;
   margin-bottom: 20px;
-  font-size: 28px;
+  font-size: 35px;
+  font-weight: 900;
 }
 
 .input-group {
