@@ -44,7 +44,7 @@ h2 {
   margin-right: 8px;
 }
 
-.aluno button {
+.aluno .entrar {
   flex: 1;
   background: #e53935;
   color: #fff;
@@ -85,4 +85,21 @@ h2 {
 .user {
   width: 40px;
   height: 40px;
+}
+
+.edit-nome {
+  flex: 1;
+  background: #e53935; /* igual ao botão */
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 8px;
+  margin-left: 8px;
+  text-align: center;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
 }

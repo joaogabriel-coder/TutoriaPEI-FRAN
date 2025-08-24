@@ -5,20 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alunos</title>
     <link rel="stylesheet" href="css/styleAlunos.css" />
+    <script src="js/Alunos.js" defer></script>
   </head>
   <body>
     <div class="container">
       <h2>Alunos</h2>
 
-      <div class="aluno">
-        <a href=""><img src="img/user (1).png" alt="" class="user"></a>
-        <button>Nome do Aluno</button>
-        <a href=""><img src="img/lapis.png" alt="" class="pincel"></a>
+      <!-- Lista de alunos -->
+      <div id="lista-alunos">
+        <div class="aluno">
+          <a href="#"><img src="img/user (1).png" alt="User" class="user" /></a>
+          <input
+            type="button"
+            value="Nome do Aluno"
+            class="entrar"
+            onclick="location.href='Opcoes.html'"
+          />
+          <a href="#"
+            ><img src="img/lapis.png" alt="Editar" class="pincel"
+          /></a>
+          <!-- Botão de excluir dentro do aluno -->
+          <a href="#" class="remover"
+            ><img src="img/lixeira.png" alt="Excluir" class="trash"
+          /></a>
+        </div>
       </div>
 
+      <!-- Botão para adicionar -->
       <div class="footer">
-        <a href=""><img src="img/adicionar.png" alt=""></a>
-        <a href=""><img src="img/lixeira.png" alt=""></a>
+        <a href="#" id="add"><img src="img/adicionar.png" alt="Adicionar" /></a>
+      </div>
     </div>
   </body>
 </html>

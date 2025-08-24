@@ -1,0 +1,129 @@
+/*
+Paleta de cores
+azul mais claro: #303A73
+azul mais escuro:#282E40
+vermelho:#EC3237
+*/
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 375px; /* Tamanho comum de tela de celular */
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ec3237;
+  margin: 0;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.icon-placeholder {
+  width: 60px;
+  height: 60px;
+  background-color: #303a73; /* Azul escuro */
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 10px;
+  /* Para ícones reais, você pode usar uma imagem de fundo, SVG ou um ícone de biblioteca */
+}
+
+.card p {
+  font-size: 14px;
+  color: #333;
+  font-weight: 400;
+  margin: 0;
+}
+
+.cta-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.cta-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #ec3237; /* Vermelho do botão */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #ec3237; /* Um vermelho um pouco mais escuro */
+}
+.title {
+  color: #ec3237;
+  font-size: 45px;
+  margin-bottom: 20px;
+  font-weight: 900;
+  text-align: center;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 380px) {
+  .grid-container {
+    gap: 15px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+}
