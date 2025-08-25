@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #000;
+}
+
+header {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+  color: #d32f2f;
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+.container {
+  padding: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.salvar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: #d32f2f;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}

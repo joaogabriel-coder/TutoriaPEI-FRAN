@@ -13,7 +13,10 @@ body {
   height: 100vh;
   margin: 0;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .app-container {
   width: 100%;
   max-width: 375px; /* Tamanho comum de tela de celular */
