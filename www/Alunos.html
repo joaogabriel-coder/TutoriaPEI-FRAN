@@ -14,17 +14,20 @@
       <!-- Lista de alunos -->
       <div id="lista-alunos">
         <div class="aluno">
-          <a href="#"><img src="img/user (1).png" alt="User" class="user" /></a>
+          <a href="#" class="user-wrapper">
+            <img src="img/user (1).png" alt="User" class="user" />
+          </a>
+          <input type="file" accept="image/*" class="upload" hidden />
           <input
             type="button"
             value="Nome do Aluno"
             class="entrar"
             onclick="location.href='Opcoes.html'"
           />
+
           <a href="#"
             ><img src="img/lapis.png" alt="Editar" class="pincel"
           /></a>
-          <!-- Botão de excluir dentro do aluno -->
           <a href="#" class="remover"
             ><img src="img/lixeira.png" alt="Excluir" class="trash"
           /></a>

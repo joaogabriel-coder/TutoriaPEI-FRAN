@@ -49,11 +49,8 @@ select {
 }
 
 .salvar {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
+  display: block;
+  width: 100%;
   background: #d32f2f;
   color: #fff;
   font-size: 20px;
@@ -61,4 +58,6 @@ select {
   padding: 15px;
   border-radius: 10px;
   cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
