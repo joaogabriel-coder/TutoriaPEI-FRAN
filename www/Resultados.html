@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultados</title>
+  </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultados</title>
+    <link rel="stylesheet" href="css/styleResultados.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Resultados</h1>
+    </header>
+
+    <main>
+      <form>
+        <h2>Resultados APP</h2>
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">Disciplinas Avaliadas</th>
+              <th colspan="2">Diagnóstica</th>
+              <th colspan="2">1º Bimestre</th>
+              <th colspan="2">2º Bimestre</th>
+              <th colspan="2">3º Bimestre</th>
+            </tr>
+            <tr>
+              <th>Nº de Questões</th>
+              <th>Nº de Acertos</th>
+              <th>Nº de Questões</th>
+              <th>Nº de Acertos</th>
+              <th>Nº de Questões</th>
+              <th>Nº de Acertos</th>
+              <th>Nº de Questões</th>
+              <th>Nº de Acertos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Língua Portuguesa</td>
+              <td><input type="text" name="lp_diag_qtd" /></td>
+              <td><input type="text" name="lp_diag_acertos" /></td>
+              <td><input type="text" name="lp_1_qtd" /></td>
+              <td><input type="text" name="lp_1_acertos" /></td>
+              <td><input type="text" name="lp_2_qtd" /></td>
+              <td><input type="text" name="lp_2_acertos" /></td>
+              <td><input type="text" name="lp_3_qtd" /></td>
+              <td><input type="text" name="lp_3_acertos" /></td>
+            </tr>
+            <tr>
+              <td>Matemática</td>
+              <td><input type="text" name="mat_diag_qtd" /></td>
+              <td><input type="text" name="mat_diag_acertos" /></td>
+              <td><input type="text" name="mat_1_qtd" /></td>
+              <td><input type="text" name="mat_1_acertos" /></td>
+              <td><input type="text" name="mat_2_qtd" /></td>
+              <td><input type="text" name="mat_2_acertos" /></td>
+              <td><input type="text" name="mat_3_qtd" /></td>
+              <td><input type="text" name="mat_3_acertos" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Resultados Simulado</h2>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>1º Bimestre</th>
+              <th>2º Bimestre</th>
+              <th>3º Bimestre</th>
+              <th>4º Bimestre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Número de Questões</td>
+              <td><input type="text" name="sim_1_qtd" /></td>
+              <td><input type="text" name="sim_2_qtd" /></td>
+              <td><input type="text" name="sim_3_qtd" /></td>
+              <td><input type="text" name="sim_4_qtd" /></td>
+            </tr>
+            <tr>
+              <td>Acertos</td>
+              <td><input type="text" name="sim_1_acertos" /></td>
+              <td><input type="text" name="sim_2_acertos" /></td>
+              <td><input type="text" name="sim_3_acertos" /></td>
+              <td><input type="text" name="sim_4_acertos" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="submit" class="save-btn">Salvar</button>
+      </form>
+    </main>
+  </body>
+</html>

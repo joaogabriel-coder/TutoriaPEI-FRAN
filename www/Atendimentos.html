@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atendimentos</title>
+    <link rel="stylesheet" href="css/styleAtendimentos.css" />
+    <script src="js/Atendimentos.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Atendimentos<br/>Realizados</h1>
+    </header>
+
+    <main>
+      <form>
+        <h2>Breve Registro do Atendimento Realizado</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Assunto<br />(A = Acadêmico | P = Pessoal)</th>
+              <th>Observações do Tutor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <<tbody>
+  <tr>
+    <td><input type="text" name="data1" placeholder="DD/MM"></td>
+    <td>
+      <label><input type="checkbox" name="assunto1_a"> A</label>
+      <label><input type="checkbox" name="assunto1_p"> P</label>
+    </td>
+    <td><textarea name="obs1" placeholder="Digite as observações..."></textarea></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="data2" placeholder="DD/MM"></td>
+    <td>
+      <label><input type="checkbox" name="assunto2_a"> A</label>
+      <label><input type="checkbox" name="assunto2_p"> P</label>
+    </td>
+    <td><textarea name="obs2" placeholder="Digite as observações..."></textarea></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="data3" placeholder="DD/MM"></td>
+    <td>
+      <label><input type="checkbox" name="assunto3_a"> A</label>
+      <label><input type="checkbox" name="assunto3_p"> P</label>
+    </td>
+    <td><textarea name="obs3" placeholder="Digite as observações..."></textarea></td>
+  </tr>
+</tbody>
+          </tbody>
+        </table>
+        <button type="submit" class="save-btn">Salvar</button>
+      </form>
+    </main>
+  </body>
+</html>

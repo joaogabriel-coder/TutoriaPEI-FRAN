@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+header {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+  color: #d32f2f;
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+main {
+  padding: 15px;
+  overflow-y: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th,
+td {
+  border: 1px solid #000;
+  padding: 6px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+input[type="text"] {
+  width: 95%;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  text-align: center;
+}
+
+label {
+  margin: 0 3px;
+  font-size: 12px;
+}
+
+.save-btn {
+  background: #ec3237;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  min-height: 50px;
+  resize: none; /* remove o redimensionamento manual feio */
+  border: none;
+  outline: none;
+  font-size: 12px;
+  padding: 4px;
+  box-sizing: border-box;
+  overflow-y: hidden; /* esconde barra de rolagem */
+  text-align: left;
+}
