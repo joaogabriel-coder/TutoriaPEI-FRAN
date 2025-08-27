@@ -39,6 +39,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-size: 12px;
+  table-layout: fixed;
 }
 
 th,
@@ -46,6 +47,8 @@ td {
   border: 1px solid #000;
   padding: 6px;
   text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 input[type="text"] {
@@ -54,6 +57,7 @@ input[type="text"] {
   outline: none;
   text-align: center;
   font-size: 12px;
+  box-sizing: border-box;
 }
 
 .save-btn {

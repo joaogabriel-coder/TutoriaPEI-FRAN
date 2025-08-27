@@ -28,6 +28,7 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
   font-size: 14px;
+  table-layout: fixed;
 }
 
 table,
@@ -40,6 +41,8 @@ th,
 td {
   padding: 10px;
   text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 th {
@@ -63,4 +66,12 @@ td:first-child {
   border-radius: 10px;
   cursor: pointer;
   margin-top: 50px;
+}
+input[type="text"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 12px;
+  box-sizing: border-box;
 }
