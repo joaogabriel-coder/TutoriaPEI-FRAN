@@ -85,3 +85,9 @@ textarea {
   overflow-y: hidden; /* esconde barra de rolagem */
   text-align: left;
 }
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

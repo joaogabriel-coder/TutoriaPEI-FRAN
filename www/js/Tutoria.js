@@ -1,10 +1,3 @@
-document.addEventListener("input", function (e) {
-  if (e.target.tagName.toLowerCase() === "textarea") {
-    e.target.style.height = "auto"; // reseta
-    e.target.style.height = e.target.scrollHeight + "px"; // ajusta
-  }
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.getElementById("add");
   const table = document.querySelector("table");
@@ -23,15 +16,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     newRow.innerHTML = `
       <td>
-        <input class="data-input" type="text" placeholder="DD/MM"/>
+        <input class="data-input" type="text" />
       </td>
-      <td style="text-align:center;">
-        <label><input type="checkbox" /> A</label>
-        <label><input type="checkbox" /> P</label>
+      <td>
+        <div class="assuntos">
+          <label><input type="checkbox" /> Tarefa CMSP</label>
+          <label><input type="checkbox" /> Leitura</label>
+          <label><input type="checkbox" /> Redação</label>
+          <label><input type="checkbox" /> Prova Paulista</label>
+          <label><input type="checkbox" /> Avaliações</label>
+          <label><input type="checkbox" /> Dificuldades</label>
+          <label><input type="checkbox" /> Outros</label>
+        </div>
       </td>
       <td>
         <textarea
-          placeholder="Digite as observações..."
+          placeholder="Digite aqui as orientações do tutor..."
           oninput="autoResize(this)"
         ></textarea>
       </td>

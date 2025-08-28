@@ -89,3 +89,9 @@ button:hover {
   border: none;
   font-size: 13px;
 }
+.footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
