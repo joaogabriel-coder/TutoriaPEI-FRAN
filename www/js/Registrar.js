@@ -1,5 +1,5 @@
  document.getElementById("registerForm").addEventListener("submit", async function (e) {
-      e.preventDefault(); // impede recarregar a página
+      e.preventDefault(); 
 
       const nome = document.getElementById("name").value;
       const cpf = document.getElementById("cpf").value;
@@ -28,5 +28,11 @@
       } catch (error) {
         console.error("Erro:", error);
         alert("Não foi possível conectar ao servidor.");
+      }
+
+      function limpar(){
+        name.value = ""
+        cpf.value = ""
+        cpfConfirm.value = ""
       }
     });
