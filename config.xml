@@ -11,5 +11,6 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <access origin="*"/>
+    <preference name="scheme" value="http"/>
     <icon src="res/logo-escola.png" />
 </widget>
