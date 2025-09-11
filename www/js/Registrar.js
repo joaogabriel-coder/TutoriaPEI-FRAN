@@ -1,38 +1,39 @@
- document.getElementById("registerForm").addEventListener("submit", async function (e) {
-      e.preventDefault(); 
+document.getElementById("registerForm").addEventListener("submit", async function (e) {
+  e.preventDefault(); 
 
-      const nome = document.getElementById("name").value;
-      const cpf = document.getElementById("cpf").value;
-      const cpfConfirm = document.getElementById("cpfConfirm").value;
+  const nome = document.getElementById("name");
+  const cpf = document.getElementById("cpf");
+  const cpfConfirm = document.getElementById("cpfConfirm");
 
-      if (cpf !== cpfConfirm) {
-        alert("Os CPFs não coincidem!");
-        return;
+  if (cpf.value !== cpfConfirm.value) {
+    alert("Os CPFs não coincidem!");
+    return;
+  }
+
+  fetch("http://192.168.15.76:8080/usuarios", {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify({
+        cpf: cpf.value,
+        nome: nome.value
+      })
+    })
+    .then(res => {
+      if (res.ok) {
+        alert("Usuário cadastrado com sucesso!");
+        // Limpa os campos
+        nome.value = "";
+        cpf.value = "";
+        cpfConfirm.value = "";
+      } else {
+        alert("Erro ao cadastrar usuário");
       }
-
-      try {
-        const response = await fetch("http://localhost:8080/usuarios", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ nome: nome, cpf: cpf })
-        });
-
-        if (response.ok) {
-          alert("Usuário registrado com sucesso!");
-          window.location.href = "Alunos.html"; // redireciona para página de alunos
-        } else {
-          alert("Erro ao registrar usuário.");
-        }
-      } catch (error) {
-        console.error("Erro:", error);
-        alert("Não foi possível conectar ao servidor.");
-      }
-
-      function limpar(){
-        name.value = ""
-        cpf.value = ""
-        cpfConfirm.value = ""
-      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Não foi possível conectar ao servidor");
     });
+});
