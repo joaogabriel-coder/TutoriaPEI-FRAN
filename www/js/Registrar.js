@@ -9,7 +9,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     alert("Os CPFs não coincidem!");
     return;
   }
-
+  console.log("Tentando conectar ao servidor...");
   fetch("http://192.168.15.76:8080/usuarios", {
       headers: {
         'Accept': 'application/json',
