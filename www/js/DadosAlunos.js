@@ -1,7 +1,7 @@
 
 async function carregarAluno(ra) {
   try {
-    // ✅ Corrigido: template string com crase
+   
     const response = await fetch(`https://192.168.15.76:8443/alunos/${ra}`);
     if (!response.ok) {
       throw new Error("Erro ao buscar aluno: " + response.status);
