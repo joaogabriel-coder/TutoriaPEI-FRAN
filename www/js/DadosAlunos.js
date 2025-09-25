@@ -1,4 +1,4 @@
-var ra = 123456789;
+
 async function carregarAluno(ra) {
   try {
     // ✅ Corrigido: template string com crase
