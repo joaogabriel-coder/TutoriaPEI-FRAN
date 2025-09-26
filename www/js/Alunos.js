@@ -1,8 +1,11 @@
 const lista = document.getElementById("lista-alunos");
 const addBtn = document.getElementById("add");
 
+// Array global para guardar os alunos
+let alunos = [];
+
 // Função para criar aluno dinamicamente
-function criarAluno(nome) {
+function criarAluno(nome, ra) {
   const novoAluno = document.createElement("div");
   novoAluno.classList.add("aluno");
 
@@ -16,11 +19,17 @@ function criarAluno(nome) {
     <a href="#" class="remover"><img src="img/lixeira.png" alt="Excluir" class="trash"></a>
   `;
 
-  // botão excluir
-  novoAluno.querySelector(".remover").addEventListener("click", (e) => {
-    e.preventDefault();
+// botão excluir
+novoAluno.querySelector(".remover").addEventListener("click", (e) => {
+  e.preventDefault();
+  const confirmar = confirm(`Tem certeza que deseja remover o aluno "${nome}"?`);
+  if (confirmar) {
     novoAluno.remove();
-  });
+    alunos = alunos.filter(a => a.ra !== ra); // remove também do array
+    console.log(`Aluno "${nome}" removido com sucesso!`);
+  }
+});
+
 
   // clique no ícone de usuário abre input de arquivo
   const userIcon = novoAluno.querySelector(".user-wrapper");
@@ -32,13 +41,12 @@ function criarAluno(nome) {
     fileInput.click();
   });
 
-  // quando escolher arquivo, mostra foto
   fileInput.addEventListener("change", () => {
     const file = fileInput.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        img.src = event.target.result; // troca o ícone pela foto escolhida
+        img.src = event.target.result;
       };
       reader.readAsDataURL(file);
     }
@@ -48,7 +56,7 @@ function criarAluno(nome) {
   const lapis = novoAluno.querySelector(".pincel");
   lapis.addEventListener("click", (e) => {
     e.preventDefault();
-    habilitarEdicao(novoAluno);
+    habilitarEdicao(novoAluno, ra);
   });
 
   return novoAluno;
@@ -57,52 +65,42 @@ function criarAluno(nome) {
 // Evento para adicionar novo aluno
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  lista.appendChild(criarAluno("Nome do Aluno"));
-});
 
-// Configura o aluno inicial do HTML
-document.querySelectorAll(".aluno").forEach((alunoDiv) => {
-  const remover = alunoDiv.querySelector(".remover");
-  if (remover) {
-    remover.addEventListener("click", (e) => {
-      e.preventDefault();
-      alunoDiv.remove();
-    });
-  }
+  // cria um mini formulário
+  const form = document.createElement("div");
+  form.classList.add("form-aluno");
+  form.innerHTML = `
+  <input type="text" placeholder="Nome do Aluno" id="inputNome">
+  <input type="text" placeholder="RA do Aluno" id="inputRA">
+  <div style="display:flex; gap:10px; justify-content:center; width:100%;">
+    <button id="salvarAluno" class="btn btn-salvar">Salvar</button>
+    <button id="cancelarAluno" class="btn btn-cancelar">Cancelar</button>
+  </div>
+`;
 
-  const userIcon = alunoDiv.querySelector(".user-wrapper");
-  const fileInput = alunoDiv.querySelector(".upload");
-  const img = alunoDiv.querySelector(".user");
+  lista.appendChild(form);
 
-  if (userIcon && fileInput) {
-    userIcon.addEventListener("click", (e) => {
-      e.preventDefault();
-      fileInput.click();
-    });
+  form.querySelector("#salvarAluno").addEventListener("click", () => {
+    const nome = form.querySelector("#inputNome").value.trim();
+    const ra = form.querySelector("#inputRA").value.trim();
 
-    fileInput.addEventListener("change", () => {
-      const file = fileInput.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          img.src = event.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  }
+    if (nome && ra) {
+      alunos.push({ nome, ra }); // salva no array
+      lista.appendChild(criarAluno(nome, ra));
+      form.remove();
+      console.log("Alunos cadastrados:", alunos);
+    } else {
+      alert("Preencha todos os campos!");
+    }
+  });
 
-  const lapis = alunoDiv.querySelector(".pincel");
-  if (lapis) {
-    lapis.addEventListener("click", (e) => {
-      e.preventDefault();
-      habilitarEdicao(alunoDiv);
-    });
-  }
+  form.querySelector("#cancelarAluno").addEventListener("click", () => {
+    form.remove();
+  });
 });
 
 // Função para habilitar edição do nome
-function habilitarEdicao(alunoDiv) {
+function habilitarEdicao(alunoDiv, ra) {
   const nomeBtn = alunoDiv.querySelector("input.entrar");
   const lapis = alunoDiv.querySelector(".pincel");
   const nomeAtual = nomeBtn.value;
@@ -126,8 +124,14 @@ function habilitarEdicao(alunoDiv) {
       };
       input.replaceWith(novoNomeBtn);
       lapis.style.display = "";
+
+      // atualiza no array global
+      const aluno = alunos.find(a => a.ra === ra);
+      if (aluno) aluno.nome = novoNomeBtn.value;
     }
   });
 
   input.focus();
 }
+
+

@@ -107,3 +107,65 @@ h2 {
   outline: none;
   box-sizing: border-box;
 }
+
+.form-aluno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 250px;
+}
+
+.form-aluno input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  border: 1.5px solid #e53935;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.form-aluno input[type="text"]:focus {
+  border-color: #b71c1c;
+  box-shadow: 0 0 6px rgba(229, 57, 53, 0.5);
+}
+
+.form-aluno .btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.form-aluno .btn-salvar {
+  text-decoration: none;
+  border: none;
+  background: #e53935;
+  color: #fff;
+}
+
+.form-aluno .btn-salvar:hover {
+  background: #b71c1c;
+}
+
+.form-aluno .btn-cancelar {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+  border: none;
+  text-decoration: none;
+}
+
+.form-aluno .btn-cancelar:hover {
+  background: #e0e0e0;
+}
+
