@@ -19,17 +19,16 @@ function criarAluno(nome, ra) {
     <a href="#" class="remover"><img src="img/lixeira.png" alt="Excluir" class="trash"></a>
   `;
 
-// botão excluir
-novoAluno.querySelector(".remover").addEventListener("click", (e) => {
-  e.preventDefault();
-  const confirmar = confirm(`Tem certeza que deseja remover o aluno "${nome}"?`);
-  if (confirmar) {
-    novoAluno.remove();
-    alunos = alunos.filter(a => a.ra !== ra); // remove também do array
-    console.log(`Aluno "${nome}" removido com sucesso!`);
-  }
-});
-
+  // botão excluir
+  novoAluno.querySelector(".remover").addEventListener("click", (e) => {
+    e.preventDefault();
+    const confirmar = confirm(`Tem certeza que deseja remover o aluno "${nome}"?`);
+    if (confirmar) {
+      novoAluno.remove();
+      alunos = alunos.filter(a => a.ra !== ra); // remove também do array
+      console.log(`Aluno "${nome}" removido com sucesso!`);
+    }
+  });
 
   // clique no ícone de usuário abre input de arquivo
   const userIcon = novoAluno.querySelector(".user-wrapper");
@@ -70,33 +69,65 @@ addBtn.addEventListener("click", (e) => {
   const form = document.createElement("div");
   form.classList.add("form-aluno");
   form.innerHTML = `
-  <input type="text" placeholder="Nome do Aluno" id="inputNome">
-  <input type="text" placeholder="RA do Aluno" id="inputRA">
-  <div style="display:flex; gap:10px; justify-content:center; width:100%;">
-    <button id="salvarAluno" class="btn btn-salvar">Salvar</button>
-    <button id="cancelarAluno" class="btn btn-cancelar">Cancelar</button>
-  </div>
-`;
+    <input type="text" placeholder="Nome do Aluno" id="inputNome">
+    <input type="text" placeholder="RA do Aluno" id="inputRA">
+    <div style="display:flex; gap:10px; justify-content:center; width:100%;">
+      <button id="salvarAluno" class="btn btn-salvar">Salvar</button>
+      <button id="cancelarAluno" class="btn btn-cancelar">Cancelar</button>
+    </div>
+  `;
 
-  lista.appendChild(form);
+  // pega os botões dentro do form
+  const btnSalvar = form.querySelector("#salvarAluno");
+  const btnCancelar = form.querySelector("#cancelarAluno");
 
-  form.querySelector("#salvarAluno").addEventListener("click", () => {
-    const nome = form.querySelector("#inputNome").value.trim();
-    const ra = form.querySelector("#inputRA").value.trim();
+  // evento salvar
+  btnSalvar.addEventListener("click", async function (e) {
+    e.preventDefault();
 
-    if (nome && ra) {
-      alunos.push({ nome, ra }); // salva no array
-      lista.appendChild(criarAluno(nome, ra));
-      form.remove();
-      console.log("Alunos cadastrados:", alunos);
-    } else {
+    const nomeInput = form.querySelector("#inputNome");
+    const raInput = form.querySelector("#inputRA");
+
+    const nome = nomeInput.value.trim();
+    const ra = raInput.value.trim();
+
+    if (!nome || !ra) {
       alert("Preencha todos os campos!");
+      return;
     }
+
+    console.log("Tentando conectar com o servidor...");
+    try {
+      const res = await fetch(`https://192.168.15.76:8443/alunos/addAluno`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome, ra })
+      });
+
+      if (res.ok) {
+        alert("Aluno cadastrado com sucesso!");
+      } else {
+        alert("Erro ao cadastrar Aluno");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Não foi possível conectar ao servidor");
+    }
+
+    // adiciona no array e lista local
+    alunos.push({ nome, ra });
+    lista.appendChild(criarAluno(nome, ra));
+    form.remove();
+    console.log("Alunos cadastrados:", alunos);
   });
 
-  form.querySelector("#cancelarAluno").addEventListener("click", () => {
+  // evento cancelar
+  btnCancelar.addEventListener("click", (e) => {
+    e.preventDefault();
     form.remove();
   });
+
+  lista.appendChild(form);
 });
 
 // Função para habilitar edição do nome
@@ -133,5 +164,3 @@ function habilitarEdicao(alunoDiv, ra) {
 
   input.focus();
 }
-
-
