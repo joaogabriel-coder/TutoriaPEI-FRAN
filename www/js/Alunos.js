@@ -98,8 +98,8 @@ addBtn.addEventListener("click", (e) => {
 
     console.log("Tentando conectar com o servidor...");
     try {
-      const res = await fetch(`https://192.168.15.76:8443/alunos/addAluno`, {
-        method: 'POST',
+      const res = await fetch(`https://192.168.15.76:8443/alunos/simple`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nome, ra })
       });
