@@ -1,7 +1,6 @@
 const lista = document.getElementById("lista-alunos");
 const addBtn = document.getElementById("add");
 
-// Array global para guardar os alunos
 let alunos = [];
 
 // Função para criar aluno dinamicamente
@@ -65,7 +64,7 @@ function criarAluno(nome, ra) {
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // cria um mini formulário
+// cria um mini formulário
   const form = document.createElement("div");
   form.classList.add("form-aluno");
   form.innerHTML = `
