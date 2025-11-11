@@ -2,7 +2,7 @@
 async function carregarAluno(ra) {
   try {
    
-    const response = await fetch(`https://192.168.15.76:8443/alunos/123456789`);
+    const response = await fetch(`https://192.168.1.108:8080/alunos/123456789`);
     if (!response.ok) {
       throw new Error("Erro ao buscar aluno: " + response.status);
     }

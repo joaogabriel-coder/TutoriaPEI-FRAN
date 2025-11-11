@@ -2,8 +2,57 @@ const lista = document.getElementById("lista-alunos");
 const addBtn = document.getElementById("add");
 
 let alunos = [];
+document.addEventListener("DOMContentLoaded", async () => {
+  const usuarioId = localStorage.getItem("usuarioId");
 
-// Função para criar aluno dinamicamente
+  if (!usuarioId) {
+    alert("Usuário não identificado! Faça login novamente.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  try {
+    const res = await fetch(`http://192.168.1.108:8080/alunos/simple?usuarioId=${usuarioId}`);
+    if (!res.ok) {
+      const msg = await res.text();
+      alert(msg || "Erro ao carregar alunos.");
+      return;
+    }
+
+    const alunos = await res.json();
+    console.log("Alunos do usuário:", alunos);
+    // aqui você pode renderizar os alunos na tela
+
+  } catch (error) {
+    console.error("Erro de conexão:", error);
+    alert("Não foi possível conectar ao servidor.");
+  }
+});
+// =============================
+// 1️⃣  Carregar alunos do backend
+// =============================
+async function carregarAlunos() {
+  const usuarioId = localStorage.getItem("usuarioId");
+  if (!usuarioId) {
+    alert("Usuário não identificado!");
+    return;
+  }
+
+  try {
+    const res = await fetch(`http://192.168.1.108:8080/alunos/usuario/${usuarioId}`);
+    if (!res.ok) throw new Error("Erro ao buscar alunos");
+    const dados = await res.json();
+    alunos = dados;
+    lista.innerHTML = "";
+    alunos.forEach(a => lista.appendChild(criarAluno(a.nome, a.ra)));
+  } catch (err) {
+    console.error("Falha ao carregar alunos:", err);
+  }
+}
+
+// =============================
+// 2️⃣  Função para criar aluno dinamicamente
+// =============================
 function criarAluno(nome, ra) {
   const novoAluno = document.createElement("div");
   novoAluno.classList.add("aluno");
@@ -19,13 +68,15 @@ function criarAluno(nome, ra) {
   `;
 
   // botão excluir
-  novoAluno.querySelector(".remover").addEventListener("click", (e) => {
+  novoAluno.querySelector(".remover").addEventListener("click", async (e) => {
     e.preventDefault();
     const confirmar = confirm(`Tem certeza que deseja remover o aluno "${nome}"?`);
     if (confirmar) {
+      // se quiser deletar no backend, descomente:
+      // await fetch(`http://192.168.1.108:8080/alunos/${ra}`, { method: "DELETE" });
       novoAluno.remove();
-      alunos = alunos.filter(a => a.ra !== ra); // remove também do array
-      console.log(`Aluno "${nome}" removido com sucesso!`);
+      alunos = alunos.filter(a => a.ra !== ra);
+      console.log(`Aluno "${nome}" removido.`);
     }
   });
 
@@ -60,11 +111,12 @@ function criarAluno(nome, ra) {
   return novoAluno;
 }
 
-// Evento para adicionar novo aluno
+// =============================
+// 3️⃣  Adicionar novo aluno
+// =============================
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-// cria um mini formulário
   const form = document.createElement("div");
   form.classList.add("form-aluno");
   form.innerHTML = `
@@ -76,17 +128,14 @@ addBtn.addEventListener("click", (e) => {
     </div>
   `;
 
-  // pega os botões dentro do form
   const btnSalvar = form.querySelector("#salvarAluno");
   const btnCancelar = form.querySelector("#cancelarAluno");
 
-  // evento salvar
   btnSalvar.addEventListener("click", async function (e) {
     e.preventDefault();
 
     const nomeInput = form.querySelector("#inputNome");
     const raInput = form.querySelector("#inputRA");
-
     const nome = nomeInput.value.trim();
     const ra = raInput.value.trim();
 
@@ -95,32 +144,33 @@ addBtn.addEventListener("click", (e) => {
       return;
     }
 
-    console.log("Tentando conectar com o servidor...");
     try {
-      const res = await fetch(`https://192.168.15.76:8443/alunos/simple`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, ra })
-      });
+      console.log("Enviando aluno para o backend...");
+      const usuarioId = localStorage.getItem("usuarioId");
+      const res = await fetch("http://192.168.1.108:8080/alunos/simple", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+      nome,
+      ra,
+      usuarioId
+    })
+  });
 
       if (res.ok) {
         alert("Aluno cadastrado com sucesso!");
+        await carregarAlunos(); // atualiza lista
       } else {
-        alert("Erro ao cadastrar Aluno");
+        alert("Erro ao cadastrar aluno.");
       }
     } catch (err) {
       console.error(err);
       alert("Não foi possível conectar ao servidor");
     }
 
-    // adiciona no array e lista local
-    alunos.push({ nome, ra });
-    lista.appendChild(criarAluno(nome, ra));
     form.remove();
-    console.log("Alunos cadastrados:", alunos);
   });
 
-  // evento cancelar
   btnCancelar.addEventListener("click", (e) => {
     e.preventDefault();
     form.remove();
@@ -129,7 +179,9 @@ addBtn.addEventListener("click", (e) => {
   lista.appendChild(form);
 });
 
-// Função para habilitar edição do nome
+// =============================
+// 4️⃣  Edição do nome do aluno
+// =============================
 function habilitarEdicao(alunoDiv, ra) {
   const nomeBtn = alunoDiv.querySelector("input.entrar");
   const lapis = alunoDiv.querySelector(".pincel");
@@ -155,7 +207,6 @@ function habilitarEdicao(alunoDiv, ra) {
       input.replaceWith(novoNomeBtn);
       lapis.style.display = "";
 
-      // atualiza no array global
       const aluno = alunos.find(a => a.ra === ra);
       if (aluno) aluno.nome = novoNomeBtn.value;
     }
@@ -163,3 +214,8 @@ function habilitarEdicao(alunoDiv, ra) {
 
   input.focus();
 }
+
+// =============================
+// 5️⃣  Executa carregamento ao abrir página
+// =============================
+document.addEventListener("DOMContentLoaded", carregarAlunos);

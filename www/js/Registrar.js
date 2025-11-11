@@ -11,6 +11,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
   }
   console.log("Tentando conectar ao servidor...");
   fetch(`https://172.100.121.229:8443/usuarios`, {
+  fetch(`http://192.168.1.108:8080/usuarios`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

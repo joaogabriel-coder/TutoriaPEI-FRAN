@@ -6,27 +6,31 @@
     <title>Entrar</title>
     <link rel="stylesheet" href="css/index.css" />
   </head>
-  </head>
-<body>
-  <div class="container">
-    <div class="header">
-      <img src="img/logo.jpeg" alt="logo"> 
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="img/logo.jpeg" alt="logo"> 
+      </div>
+      <div class="content">
+        <h2>Entrar</h2>
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" placeholder="Digite seu nome" required>
+          </div>
+          <div class="input-group">
+            <label for="cpf">CPF:</label>
+            <input type="password" id="cpf" placeholder="Digite seu CPF" required>
+          </div>
+          <input type="submit" value="Entrar" class="btn">
+          <p class="possuiconta">Não possui conta? 
+            <a href="Registrar.html" class="entrar">Registrar-se</a>
+          </p>
+        </form>
+      </div>
     </div>
-    <div class="content">
-      <h2>Entrar</h2>
-      <form>
-        <div class="input-group">
-          <label for="name">Nome:</label >
-          <input type="text" id="name" placeholder="Digite seu nome" required>
-        </div>
-        <div class="input-group">
-          <label for="cpf">CPF:</label>
-          <input type="password" id="cpf" placeholder="Digite seu CPF" required>
-        </div>
-        <input type="button" value="Entrar" class="btn" onclick="location.href='Opcoes.html'">
-        <p class="possuiconta">Não possui conta? <a href="Registrar.html" class="entrar">Registrar-se</a></p>
-      </form>
-    </div>
-  </div>
-</body>
+
+    <script src="js/login.js"></script>
+  </body>
 </html>
