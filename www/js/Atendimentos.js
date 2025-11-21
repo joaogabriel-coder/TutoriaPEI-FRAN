@@ -1,7 +1,14 @@
+const ra = localStorage.getItem("alunoId");
+
+if (!ra) {
+  alert("RA não encontrado. Retorne à tela de opções.");
+  location.href = "Opcoes.html";
+}
+
 document.addEventListener("input", function (e) {
   if (e.target.tagName.toLowerCase() === "textarea") {
-    e.target.style.height = "auto"; // reseta
-    e.target.style.height = e.target.scrollHeight + "px"; // ajusta
+    e.target.style.height = "auto"; 
+    e.target.style.height = e.target.scrollHeight + "px"; 
   }
 });
 

@@ -10,7 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   }
 
   try {
-    const res = await fetch("http://192.168.1.108:8080/usuarios/login", {
+    const res = await fetch("http://localhost:8080/usuarios/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nome, cpf })

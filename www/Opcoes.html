@@ -13,47 +13,49 @@
   <body>
     <div class="app-container">
       <header class="app-header">
-        <h1 class="title">Tutoria PEI-FRAN</h1>
+        <h1 class="title">Tutoria PEI-FRAN</h1>'
+        <button onclick="irAlunos()">Voltar</button>
       </header>
       <main class="main-content">
         <div class="grid-container">
           <div class="card">
-            <a href="infoAdd.html">
+            <a onclick="irInfoAdicional()">
               <div class="icon-placeholder">+</div>
             </a>
             <p>Informações Adicionais</p>
           </div>
           <div class="card">
-            <a href="Resultados.html">
+            <a onclick="irResultados()">
               <div class="icon-placeholder">✓</div>
             </a>
             <p>Resultado de provas e simulados</p>
           </div>
           <div class="card">
-            <a href="Participacao.html">
+            <a onclick="irParticipacao()">
               <div class="icon-placeholder">🧑‍🤝‍🧑</div>
             </a>
             <p>Participação do aluno</p>
           </div>
           <div class="card">
-            <a href="Atendimentos.html">
+            <a onclick="irAtendimento()">
               <div class="icon-placeholder">🗓️</div>
             </a>
             <p>Atendimentos realizados</p>
           </div>
           <div class="card">
-            <a href="DadosAlunos.html">
+            <a onclick="irDadosAluno()">
               <div class="icon-placeholder">📁</div>
             </a>
             <p>Dados do Aluno</p>
           </div>
         </div>
         <div class="cta-button-container">
-          <a href="Tutoria.html">
+          <a onclick="irTutoria()">
             <button class="cta-button">Realizar Tutoria</button>
           </a>
         </div>
       </main>
     </div>
+    <script src="js/Opcoes.js"></script>
   </body>
 </html>

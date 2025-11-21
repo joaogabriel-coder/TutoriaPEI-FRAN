@@ -1,59 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Info Adicional</title>
+
     <link rel="stylesheet" href="css/styleInfoAdd.css">
-  </head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Info Adicional</title>
-  <link rel="stylesheet" href="css/styleInfoAdicional.css">
 </head>
 <body>
+
   <div class="container">
-    <!-- Cabeçalho -->
+
     <header class="header">
       <h1>Info Adicional</h1>
     </header>
 
-    <!-- Conteúdo -->
     <main>
+
       <section class="tabela">
         <h2>Informações Adicionais:</h2>
         <p><strong>Leituras realizadas pelo aluno:</strong></p>
-        <table>
-          <thead>
-            <tr>
+        <table id="tabelaLeituras">
+          <tr>
               <th>1º Bimestre</th>
               <th>2º Bimestre</th>
               <th>3º Bimestre</th>
               <th>4º Bimestre</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-            </tr>
-            <tr>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-            </tr>
-            <tr>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-              <td><input type="text"></td>
-            </tr>
-          </tbody>
-        </table>
+    <tr>
+        <td><input type="text" id="bm1"></td>
+        <td><input type="text" id="bm2"></td>
+        <td><input type="text" id="bm3"></td>
+        <td><input type="text" id="bm4"></td>
+    </tr>
+    <tr>
+        <td><input type="text" id="bm1_2"></td>
+        <td><input type="text" id="bm2_2"></td>
+        <td><input type="text" id="bm3_2"></td>
+        <td><input type="text" id="bm4_2"></td>
+    </tr>
+    <tr>
+        <td><input type="text" id="bm1_3"></td>
+        <td><input type="text" id="bm2_3"></td>
+        <td><input type="text" id="bm3_3"></td>
+        <td><input type="text" id="bm4_3"></td>
+    </tr>
+</table>
       </section>
+      <button class="btn-salvar" onclick="salvarSomenteLeituras()">Salvar Leituras</button>
 
       <section class="tabela">
         <p><strong>Ocorrências Disciplinares (quantidade total)</strong></p>
@@ -68,20 +62,23 @@
           </thead>
           <tbody>
             <tr>
-              <td><input type="number" min="0"></td>
-              <td><input type="number" min="0"></td>
-              <td><input type="number" min="0"></td>
-              <td><input type="number" min="0"></td>
+              <td><input type="number" min="0" id="bi1"></td>
+              <td><input type="number" min="0" id="bi2"></td>
+              <td><input type="number" min="0" id="bi3"></td>
+              <td><input type="number" min="0" id="bi4"></td>
             </tr>
           </tbody>
         </table>
       </section>
+
     </main>
 
-    <!-- Botão Salvar -->
     <footer>
-      <button class="btn-salvar">Salvar</button>
+      <button class="btn-salvar" onclick="salvarSomenteOcorrencias()">Salvar Ocorrências</button>
     </footer>
+
   </div>
+
+  <script src="js/infoAdd.js"></script>
 </body>
 </html>

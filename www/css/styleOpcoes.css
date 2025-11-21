@@ -32,6 +32,9 @@ a {
   background-color: #fff;
   padding: 20px;
   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .app-header h1 {

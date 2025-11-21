@@ -1,8 +1,14 @@
+const ra = localStorage.getItem("alunoId");
+
+if (!ra) {
+  alert("RA não encontrado. Retorne à tela de opções.");
+  location.href = "Opcoes.html";
+}
 
 async function carregarAluno(ra) {
   try {
    
-    const response = await fetch(`https://192.168.1.108:8080/alunos/123456789`);
+    const response = await fetch(`https://localhost:8080/alunos/123456789`);
     if (!response.ok) {
       throw new Error("Erro ao buscar aluno: " + response.status);
     }

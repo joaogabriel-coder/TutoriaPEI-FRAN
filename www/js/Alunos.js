@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const res = await fetch(`http://192.168.1.108:8080/alunos/simple?usuarioId=${usuarioId}`);
+    const res = await fetch(`http://localhost:8080/alunos/simple?usuarioId=${usuarioId}`);
     if (!res.ok) {
       const msg = await res.text();
       alert(msg || "Erro ao carregar alunos.");
@@ -21,16 +21,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const alunos = await res.json();
     console.log("Alunos do usuário:", alunos);
-    // aqui você pode renderizar os alunos na tela
 
   } catch (error) {
     console.error("Erro de conexão:", error);
     alert("Não foi possível conectar ao servidor.");
   }
 });
-// =============================
-// 1️⃣  Carregar alunos do backend
-// =============================
+
 async function carregarAlunos() {
   const usuarioId = localStorage.getItem("usuarioId");
   if (!usuarioId) {
@@ -39,7 +36,7 @@ async function carregarAlunos() {
   }
 
   try {
-    const res = await fetch(`http://192.168.1.108:8080/alunos/usuario/${usuarioId}`);
+    const res = await fetch(`http://localhost:8080/alunos/usuario/${usuarioId}`);
     if (!res.ok) throw new Error("Erro ao buscar alunos");
     const dados = await res.json();
     alunos = dados;
@@ -50,9 +47,7 @@ async function carregarAlunos() {
   }
 }
 
-// =============================
-// 2️⃣  Função para criar aluno dinamicamente
-// =============================
+
 function criarAluno(nome, ra) {
   const novoAluno = document.createElement("div");
   novoAluno.classList.add("aluno");
@@ -62,25 +57,22 @@ function criarAluno(nome, ra) {
       <img src="img/user (1).png" alt="User" class="user">
     </a>
     <input type="file" accept="image/*" class="upload" hidden>
-    <input type="button" value="${nome}" class="entrar" onclick="location.href='Opcoes.html'">
+    <input type="button" value="${nome}" class="entrar" onclick="selecionarAluno('${ra}')">
     <a href="#"><img src="img/lapis.png" alt="Editar" class="pincel"></a>
     <a href="#" class="remover"><img src="img/lixeira.png" alt="Excluir" class="trash"></a>
   `;
 
-  // botão excluir
+  
   novoAluno.querySelector(".remover").addEventListener("click", async (e) => {
     e.preventDefault();
     const confirmar = confirm(`Tem certeza que deseja remover o aluno "${nome}"?`);
     if (confirmar) {
-      // se quiser deletar no backend, descomente:
-      // await fetch(`http://192.168.1.108:8080/alunos/${ra}`, { method: "DELETE" });
       novoAluno.remove();
       alunos = alunos.filter(a => a.ra !== ra);
       console.log(`Aluno "${nome}" removido.`);
     }
   });
 
-  // clique no ícone de usuário abre input de arquivo
   const userIcon = novoAluno.querySelector(".user-wrapper");
   const fileInput = novoAluno.querySelector(".upload");
   const img = novoAluno.querySelector(".user");
@@ -101,7 +93,6 @@ function criarAluno(nome, ra) {
     }
   });
 
-  // evento do lápis para editar nome
   const lapis = novoAluno.querySelector(".pincel");
   lapis.addEventListener("click", (e) => {
     e.preventDefault();
@@ -111,9 +102,6 @@ function criarAluno(nome, ra) {
   return novoAluno;
 }
 
-// =============================
-// 3️⃣  Adicionar novo aluno
-// =============================
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -147,7 +135,7 @@ addBtn.addEventListener("click", (e) => {
     try {
       console.log("Enviando aluno para o backend...");
       const usuarioId = localStorage.getItem("usuarioId");
-      const res = await fetch("http://192.168.1.108:8080/alunos/simple", {
+      const res = await fetch("http://localhost:8080/alunos/simple", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -159,7 +147,7 @@ addBtn.addEventListener("click", (e) => {
 
       if (res.ok) {
         alert("Aluno cadastrado com sucesso!");
-        await carregarAlunos(); // atualiza lista
+        await carregarAlunos(); 
       } else {
         alert("Erro ao cadastrar aluno.");
       }
@@ -179,9 +167,6 @@ addBtn.addEventListener("click", (e) => {
   lista.appendChild(form);
 });
 
-// =============================
-// 4️⃣  Edição do nome do aluno
-// =============================
 function habilitarEdicao(alunoDiv, ra) {
   const nomeBtn = alunoDiv.querySelector("input.entrar");
   const lapis = alunoDiv.querySelector(".pincel");
@@ -196,26 +181,32 @@ function habilitarEdicao(alunoDiv, ra) {
   lapis.style.display = "none";
 
   input.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      const novoNomeBtn = document.createElement("input");
-      novoNomeBtn.type = "button";
-      novoNomeBtn.value = input.value;
-      novoNomeBtn.className = "entrar";
-      novoNomeBtn.onclick = function () {
-        location.href = "Opcoes.html";
-      };
-      input.replaceWith(novoNomeBtn);
-      lapis.style.display = "";
-
-      const aluno = alunos.find(a => a.ra === ra);
-      if (aluno) aluno.nome = novoNomeBtn.value;
+  if (e.key === "Enter") {
+    const novoNomeBtn = document.createElement("input");
+    novoNomeBtn.type = "button";
+    novoNomeBtn.value = input.value;
+    novoNomeBtn.className = "entrar";
+    const alunoAtual = alunos.find(a => a.ra === ra);
+    if (!alunoAtual) {
+      console.error("Aluno não encontrado para salvar o RA!");
+      return;
     }
-  });
+    novoNomeBtn.onclick = function () {
+      localStorage.setItem("alunoId", alunoAtual.ra);
+      location.href = "Opcoes.html";
+    };
+    input.replaceWith(novoNomeBtn);
+    lapis.style.display = "";
+    alunoAtual.nome = novoNomeBtn.value;
+  }
+});
 
   input.focus();
 }
 
-// =============================
-// 5️⃣  Executa carregamento ao abrir página
-// =============================
 document.addEventListener("DOMContentLoaded", carregarAlunos);
+function selecionarAluno(ra) {
+  console.log("RA selecionado:", ra);
+  localStorage.setItem("alunoId", ra);
+  location.href = "Opcoes.html";
+}

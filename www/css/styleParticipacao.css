@@ -78,3 +78,7 @@ input[type="text"] {
 .radio {
   white-space: nowrap;
 }
+
+.leituras {
+    margin-left: 5px;
+}

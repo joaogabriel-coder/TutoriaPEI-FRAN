@@ -42,25 +42,25 @@
           <tbody>
             <tr>
               <td>Língua Portuguesa</td>
-              <td><input type="text" name="lp_diag_qtd" /></td>
-              <td><input type="text" name="lp_diag_acertos" /></td>
-              <td><input type="text" name="lp_1_qtd" /></td>
-              <td><input type="text" name="lp_1_acertos" /></td>
-              <td><input type="text" name="lp_2_qtd" /></td>
-              <td><input type="text" name="lp_2_acertos" /></td>
-              <td><input type="text" name="lp_3_qtd" /></td>
-              <td><input type="text" name="lp_3_acertos" /></td>
+              <td><input type="text" name="diag_app_lp_qtd" /></td>
+              <td><input type="text" name="diag_app_lp_acerto" /></td>
+              <td><input type="text" name="Bi1_app_lp_qtd" /></td>
+              <td><input type="text" name="Bi1_app_lp_acerto" /></td>
+              <td><input type="text" name="Bi2_app_lp_qtd" /></td>
+              <td><input type="text" name="Bi2_app_lp_acerto" /></td>
+              <td><input type="text" name="Bi3_app_lp_qtd" /></td>
+              <td><input type="text" name="Bi3_app_lp_acerto" /></td>
             </tr>
             <tr>
               <td>Matemática</td>
-              <td><input type="text" name="mat_diag_qtd" /></td>
-              <td><input type="text" name="mat_diag_acertos" /></td>
-              <td><input type="text" name="mat_1_qtd" /></td>
-              <td><input type="text" name="mat_1_acertos" /></td>
-              <td><input type="text" name="mat_2_qtd" /></td>
-              <td><input type="text" name="mat_2_acertos" /></td>
-              <td><input type="text" name="mat_3_qtd" /></td>
-              <td><input type="text" name="mat_3_acertos" /></td>
+              <td><input type="text" name="diag_app_mat_qtd" /></td>
+              <td><input type="text" name="diag_app_mat_acerto" /></td>
+              <td><input type="text" name="Bi1_app_mat_qtd" /></td>
+              <td><input type="text" name="Bi1_app_mat_acerto" /></td>
+              <td><input type="text" name="Bi2_app_mat_qtd" /></td>
+              <td><input type="text" name="Bi2_app_mat_acerto" /></td>
+              <td><input type="text" name="Bi3_app_mat_qtd" /></td>
+              <td><input type="text" name="Bi3_app_mat_acerto" /></td>
             </tr>
           </tbody>
         </table>
@@ -79,23 +79,24 @@
           <tbody>
             <tr>
               <td>Número de Questões</td>
-              <td><input type="text" name="sim_1_qtd" /></td>
-              <td><input type="text" name="sim_2_qtd" /></td>
-              <td><input type="text" name="sim_3_qtd" /></td>
-              <td><input type="text" name="sim_4_qtd" /></td>
+              <td><input type="text" name="Bi1_sim_a_qtd" /></td>
+              <td><input type="text" name="Bi2_sim_a_qtd" /></td>
+              <td><input type="text" name="Bi3_sim_a_qtd" /></td>
+              <td><input type="text" name="Bi4_sim_a_qtd" /></td>
             </tr>
             <tr>
               <td>Acertos</td>
-              <td><input type="text" name="sim_1_acertos" /></td>
-              <td><input type="text" name="sim_2_acertos" /></td>
-              <td><input type="text" name="sim_3_acertos" /></td>
-              <td><input type="text" name="sim_4_acertos" /></td>
+              <td><input type="text" name="Bi1_sim_a_acerto" /></td>
+              <td><input type="text" name="Bi2_sim_a_acerto" /></td>
+              <td><input type="text" name="Bi3_sim_a_acerto" /></td>
+              <td><input type="text" name="Bi4_sim_a_acerto" /></td>
             </tr>
           </tbody>
         </table>
 
-        <button type="submit" class="save-btn">Salvar</button>
+        <button type="submit" class="save-btn" onclick="salvarResultado(event)">Salvar</button>
       </form>
     </main>
+    <script src="js/Resultados.js"></script>
   </body>
 </html>

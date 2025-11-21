@@ -34,79 +34,59 @@
           <tr>
             <td>Líder de Turma</td>
             <td>
-              <label class="radio"
-                ><input type="radio" name="lider1" value="sim" /> Sim</label
-              >
-              <label class="radio"
-                ><input type="radio" name="lider1" value="nao" /> Não</label
-              >
+              <label class="radio"><input type="radio" name="lider1" value="sim" /> Sim</label>
+              <label class="radio"><input type="radio" name="lider1" value="nao" /> Não</label>
             </td>
             <td>
-              <label class="radio"
-                ><input type="radio" name="lider2" value="sim" /> Sim</label
-              >
-              <label class="radio"
-                ><input type="radio" name="lider2" value="nao" /> Não</label
-              >
+              <label class="radio"><input type="radio" name="lider2" value="sim" /> Sim</label>
+              <label class="radio"><input type="radio" name="lider2" value="nao" /> Não</label>
             </td>
           </tr>
           <tr>
             <td>Aluno Gremista</td>
             <td>
-              <label class="radio"
-                ><input type="radio" name="gremista1" value="sim" /> Sim</label
-              >
-              <label class="radio"
-                ><input type="radio" name="gremista1" value="nao" /> Não</label
-              >
+              <label class="radio"><input type="radio" name="gremista1" value="sim" /> Sim</label>
+              <label class="radio"><input type="radio" name="gremista1" value="nao" /> Não</label>
             </td>
             <td>
-              <label class="radio"
-                ><input type="radio" name="gremista2" value="sim" /> Sim</label
-              >
-              <label class="radio"
-                ><input type="radio" name="gremista2" value="nao" /> Não</label
-              >
+              <label class="radio"><input type="radio" name="gremista2" value="sim" /> Sim</label>
+              <label class="radio"><input type="radio" name="gremista2" value="nao" /> Não</label>
             </td>
           </tr>
           <tr>
             <td>Jovem Acolhedor</td>
             <td>
-              <label class="radio"
-                ><input type="radio" name="acolhedor1" value="sim" /> Sim</label
-              >
-              <label class="radio"
-                ><input type="radio" name="acolhedor1" value="nao" /> Não</label
-              >
+              <label class="radio"><input type="radio" name="acolhedor1" value="sim" /> Sim</label>
+              <label class="radio"><input type="radio" name="acolhedor1" value="nao" /> Não</label>
             </td>
             <td>
-              <label class="radio"
-                ><input type="radio" name="acolhedor2" value="sim" /> Sim</label
-              >
-              <label class="radio"
-                ><input type="radio" name="acolhedor2" value="nao" /> Não</label
-              >
+              <label class="radio"><input type="radio" name="acolhedor2" value="sim" /> Sim</label>
+              <label class="radio"><input type="radio" name="acolhedor2" value="nao" /> Não</label>
             </td>
           </tr>
           <tr>
             <td style="background: #f2f2f2">Leituras Realizadas</td>
-            <td colspan="2"><input type="text" name="leituras" /></td>
+            <td colspan="2">
+              <div class="leituras leituras-1"></div> <br>
+              <div class="leituras leituras-2"></div> <br>
+              <div class="leituras leituras-3"></div> <br>
+              <div class="leituras leituras-4"></div>
+            </td>
           </tr>
           <tr>
             <td style="background: #f2f2f2">Ocorrências</td>
             <td colspan="2">
-              <label>1º BIM <input type="checkbox" name="ocorrencia1" /></label>
-              <label>2º BIM <input type="checkbox" name="ocorrencia2" /></label>
-              <label>3º BIM <input type="checkbox" name="ocorrencia3" /></label>
-              <label>4º BIM <input type="checkbox" name="ocorrencia4" /></label>
+              <label>1º BIM <input type="checkbox" name="ocorrencia1" class="locked" /></label>
+              <label>2º BIM <input type="checkbox" name="ocorrencia2" class="locked" /></label>
+              <label>3º BIM <input type="checkbox" name="ocorrencia3" class="locked" /></label>
+              <label>4º BIM <input type="checkbox" name="ocorrencia4" class="locked" /></label>
             </td>
           </tr>
         </tbody>
       </table>
 
-      <button type="button" class="salvar" onclick="salvarDados()">
-        Salvar
-      </button>
+      <button type="submit" class="salvar">Salvar</button>
     </form>
+    <script src="js/Participacao.js"></script>
   </body>
 </html>
