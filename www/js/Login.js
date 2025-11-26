@@ -22,8 +22,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
       return;
     }
 
-    const data = await res.json(); // ✅ data é o usuário retornado
-    localStorage.setItem("usuarioId", data.id); // ✅ corrigido aqui
+    const data = await res.json(); 
+    localStorage.setItem("usuarioId", data.id); 
     localStorage.setItem("usuario", JSON.stringify(data));
     alert(`Bem-vindo, ${data.nome}!`);
     

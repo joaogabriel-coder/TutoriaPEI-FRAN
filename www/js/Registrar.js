@@ -24,7 +24,6 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     .then(res => {
       if (res.ok) {
         alert("Usuário cadastrado com sucesso!");
-        // Limpa os campos
         nome.value = "";
         cpf.value = "";
         cpfConfirm.value = "";
