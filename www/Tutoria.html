@@ -11,7 +11,7 @@
     <header>
       <span>Tutoria</span>
     </header>
-
+      <form action="">
     <main>
       <table>
         <tr>
@@ -20,26 +20,6 @@
           <th>Orientações do Tutor</th>
         </tr>
         <tr>
-          <td>
-            <input class="data-input" type="text" />
-          </td>
-          <td>
-            <div class="assuntos">
-              <label><input type="checkbox" /> Tarefa CMSP</label>
-              <label><input type="checkbox" /> Leitura</label>
-              <label><input type="checkbox" /> Redação</label>
-              <label><input type="checkbox" /> Prova Paulista</label>
-              <label><input type="checkbox" /> Avaliações</label>
-              <label><input type="checkbox" /> Dificuldades</label>
-              <label><input type="checkbox" /> Outros</label>
-            </div>
-          </td>
-          <td>
-            <textarea
-              placeholder="Digite aqui as orientações do tutor..."
-              oninput="autoResize(this)"
-            ></textarea>
-          </td>
         </tr> 
       </table>
     </main>
@@ -47,6 +27,7 @@
       <a href="#" id="add"><img src="img/adicionar.png" alt="Adicionar" /></a>
     </div>
 
-    <button>Salvar</button>
+    <button type="submit" class="save-btn">Salvar</button>
+    </form>
   </body>
 </html>

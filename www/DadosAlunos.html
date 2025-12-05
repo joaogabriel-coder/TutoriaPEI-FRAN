@@ -16,11 +16,14 @@
       <label>Nome</label>
       <input type="text" name="nome" />
 
-      <label>Série/Idade</label>
+      <label>Série</label>
       <input type="text" name="serie" />
 
+      <label>Idade</label>
+      <input type="text" name="idade" />
+
       <label>Data Nasc.</label>
-      <input type="text" name="nascimento" placeholder="dd/mm/aaaa" />
+      <input type="text" name="dataNasc" placeholder="dd/mm/aaaa" />
 
       <label>Endereço</label>
       <input type="text" name="endereco" />
@@ -41,16 +44,22 @@
       <label>Responsável</label>
       <input type="text" name="responsavel" />
 
-      <label>Contato</label>
-      <input type="tel" name="contato" />
+      <label>Contato Pai</label>
+      <input type="tel" name="numPai" />
 
-      <label>Pais</label>
-      <input type="text" name="pais" />
+      <label>Contato Mãe</label>
+      <input type="tel" name="numMae" />
+
+      <label>Contato Responsável</label>
+      <input type="tel" name="numResponsavel" />
+
+      <label>Estrutura Familiar</label>
+      <input type="text" name="estruturaFamiliar" />
 
       <label>Como vem à escola?</label>
       <input type="text" name="transporte" />
 
-      <H3>Escolaridade</H3>
+      <h3>Escolaridade</h3>
 
       <label>Já foi reprovado?</label>
       <div class="radio-group">
@@ -58,82 +67,77 @@
         <label><input type="radio" name="reprovado" value="nao" /> Não</label>
       </div>
       <label>Se sim, qual série/ano</label>
-      <input type="text" name="serie_reprovado" />
+      <input type="text" name="serieAnoReprovado" />
 
-      <label>Dificuldade na fala/escrita?</label>
+      <label>Dificuldade na fala?</label>
       <div class="radio-group">
-        <label><input type="radio" name="fala" value="sim" /> Sim</label>
-        <label><input type="radio" name="fala" value="nao" /> Não</label>
+        <label><input type="radio" name="difFala" value="sim" /> Sim</label>
+        <label><input type="radio" name="difFala" value="nao" /> Não</label>
       </div>
 
       <label>Foi notada dificuldade na aprendizagem?</label>
       <div class="radio-group">
-        <label
-          ><input type="radio" name="aprendizagem" value="sim" /> Sim</label
-        >
-        <label
-          ><input type="radio" name="aprendizagem" value="nao" /> Não</label
-        >
+        <label><input type="radio" name="difAprendizagem" value="sim" /> Sim</label>
+        <label><input type="radio" name="difAprendizagem" value="nao" /> Não</label>
       </div>
 
       <label>Recebeu apoio pedagógico?</label>
       <div class="radio-group">
-        <label><input type="radio" name="apoio" value="sim" /> Sim</label>
-        <label><input type="radio" name="apoio" value="nao" /> Não</label>
+        <label><input type="radio" name="apoioPedagogico" value="sim" /> Sim</label>
+        <label><input type="radio" name="apoioPedagogico" value="nao" /> Não</label>
       </div>
 
       <label>Disciplinas com maior facilidade</label>
-      <input type="text" name="facilidade" />
+      <input type="text" name="disciplinasFacilidade" />
 
       <label>Disciplinas com maior dificuldade</label>
-      <input type="text" name="dificuldade" />
+      <input type="text" name="disciplinasDificuldade" />
 
       <label>Pratica alguma atividade extracurricular?</label>
       <div class="radio-group">
-        <label><input type="radio" name="atividade" value="sim" /> Sim</label>
-        <label><input type="radio" name="atividade" value="nao" /> Não</label>
+        <label><input type="radio" name="atividadeExtra" value="sim" /> Sim</label>
+        <label><input type="radio" name="atividadeExtra" value="nao" /> Não</label>
       </div>
 
       <label>Dificuldade de locomoção, postura e/ou coordenação?</label>
       <div class="radio-group">
-        <label><input type="radio" name="locomocao" value="sim" /> Sim</label>
-        <label><input type="radio" name="locomocao" value="nao" /> Não</label>
+        <label><input type="radio" name="difLocomotiva" value="sim" /> Sim</label>
+        <label><input type="radio" name="difLocomotiva" value="nao" /> Não</label>
       </div>
 
       <label>Dificuldade para enxergar?</label>
       <div class="radio-group">
-        <label><input type="radio" name="visao" value="sim" /> Sim</label>
-        <label><input type="radio" name="visao" value="nao" /> Não</label>
+        <label><input type="radio" name="difVisao" value="sim" /> Sim</label>
+        <label><input type="radio" name="difVisao" value="nao" /> Não</label>
       </div>
 
-      <label>Dificuldade para ouvir?</label>
+      <label>Dificuldade para escrever?</label>
       <div class="radio-group">
-        <label><input type="radio" name="ouvir" value="sim" /> Sim</label>
-        <label><input type="radio" name="ouvir" value="nao" /> Não</label>
+        <label><input type="radio" name="difEscrita" value="sim" /> Sim</label>
+        <label><input type="radio" name="difEscrita" value="nao" /> Não</label>
       </div>
 
       <label>Dificuldade para se manter atento?</label>
       <div class="radio-group">
-        <label><input type="radio" name="atencao" value="sim" /> Sim</label>
-        <label><input type="radio" name="atencao" value="nao" /> Não</label>
+        <label><input type="radio" name="difAtencao" value="sim" /> Sim</label>
+        <label><input type="radio" name="difAtencao" value="nao" /> Não</label>
       </div>
 
       <label>Adapta-se facilmente a novos grupos de trabalho?</label>
       <div class="radio-group">
-        <label><input type="radio" name="adaptacao" value="sim" /> Sim</label>
-        <label><input type="radio" name="adaptacao" value="nao" /> Não</label>
+        <label><input type="radio" name="adaptacaoGrupo" value="sim" /> Sim</label>
+        <label><input type="radio" name="adaptacaoGrupo" value="nao" /> Não</label>
       </div>
 
       <label>Mantém contato fora da escola com colegas de sala?</label>
       <div class="radio-group">
-        <label><input type="radio" name="colegas" value="sim" /> Sim</label>
-        <label><input type="radio" name="colegas" value="nao" /> Não</label>
+        <label><input type="radio" name="contatoFora" value="sim" /> Sim</label>
+        <label><input type="radio" name="contatoFora" value="nao" /> Não</label>
       </div>
 
       <label>Projeto de Vida (descrição)</label>
-      <textarea name="projeto"></textarea>
+      <textarea name="projetoVida"></textarea>
     </form>
-
-    <button type="button" class="salvar" onclick="salvarDados()">Salvar</button>
+    <button type="button" class="salvar" id="salvar">Salvar</button>
   </body>
 </html>

@@ -67,12 +67,38 @@ function criarAluno(nome, ra) {
     e.preventDefault();
     const confirmar = confirm(`Tem certeza que deseja remover o aluno "${nome}"?`);
     if (confirmar) {
-      novoAluno.remove();
-      alunos = alunos.filter(a => a.ra !== ra);
-      console.log(`Aluno "${nome}" removido.`);
+      try {
+    const alunoId = localStorage.getItem("alunoId");
+    const res = await fetch(`http://localhost:8080/alunos/${alunoId}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" }
+  });
+    if (!res.ok) throw new Error("Erro ao deletar aluno");
+      location.reload()
+  } catch (err) {
+    console.error("Falha ao achar aluno:", err);
+  }
     }
   });
 
+  novoAluno.querySelector(".pincel").addEventListener("click", async (e) => {
+    e.preventDefault();
+    const confirmar = confirm(`Tem certeza que deseja editar o aluno "${nome}"?`);
+    if (confirmar){
+      try{
+      const alunoId = localStorage.getItem("alunoId");
+      const res = await fetch(`http://localhost:8080/alunos/${alunoId}`,{
+      method: "PUT",
+      headers: { "Content-Type": "application/json" }
+    });
+      if (!res.ok) throw new Error("Erro ao editar aluno");
+        location.reload()
+    } catch (err) {
+      console.error("Falha ao editar aluno:", err);
+      }
+    }
+ });
+    
   const userIcon = novoAluno.querySelector(".user-wrapper");
   const fileInput = novoAluno.querySelector(".upload");
   const img = novoAluno.querySelector(".user");
@@ -101,6 +127,7 @@ function criarAluno(nome, ra) {
 
   return novoAluno;
 }
+
 
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
